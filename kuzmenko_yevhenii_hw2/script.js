@@ -20,9 +20,29 @@ var AnimalsList = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (AnimalsList.__proto__ || Object.getPrototypeOf(AnimalsList)).call(this, props));
 
         _this.state = Object.assign({}, _this.props, {
-            standartColorItem: '#e9e9e9'
+            standartColorItem: {
+                backgroundColor: '#e9e9e9'
+            },
+            activeItem: {
+                backgroundColor: 'green',
+                fontWeight: '600'
+            }
         });
 
+        setInterval(function () {
+
+            // let noActiveItem = this.state.animals.filter((item) => !item.active)
+
+            var indexNumber = Math.floor(Math.random() * _this.state.animals.length);
+            var updatedAnimals = _this.state.animals;
+            updatedAnimals[indexNumber] = Object.assign({}, updatedAnimals[indexNumber], { active: true });
+
+            _this.setState({
+                animals: updatedAnimals
+            });
+
+            animals[indexNumber];
+        }, 1000);
         return _this;
     }
 
@@ -40,7 +60,7 @@ var AnimalsList = function (_React$Component) {
                     this.state.animals.map(function (el, index) {
                         return React.createElement(
                             'tr',
-                            { style: { backgroundColor: _this2.state.standartColorItem }, key: index },
+                            { style: el.active ? _this2.state.activeItem : _this2.state.standartColorItem, key: index },
                             React.createElement(
                                 'td',
                                 null,

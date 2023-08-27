@@ -15,9 +15,30 @@ class AnimalsList extends React.Component {
 
         this.state = {
             ...this.props,
-            standartColorItem: '#e9e9e9'
+            standartColorItem: {
+                backgroundColor: '#e9e9e9',
+            }, 
+            activeItem: {
+                backgroundColor: 'green',
+                fontWeight: '600',
+            }
         }
 
+        setInterval(() => {
+
+            // let noActiveItem = this.state.animals.filter((item) => !item.active)
+
+            const indexNumber = Math.floor(Math.random() * this.state.animals.length);
+            const updatedAnimals = this.state.animals
+            updatedAnimals[indexNumber] = {...updatedAnimals[indexNumber], active: true}
+
+            this.setState({
+                animals: updatedAnimals
+            });
+
+            animals[indexNumber]
+
+        }, 1000);
     }
 
     render() {
@@ -26,7 +47,7 @@ class AnimalsList extends React.Component {
             ? <table>
                 <tbody>
                     {this.state.animals.map((el, index) => (
-                        <tr style={{backgroundColor: this.state.standartColorItem}} key={index}>
+                        <tr style={el.active ? this.state.activeItem : this.state.standartColorItem} key={index}>
                             <td>{el.type}</td>
                             <td>{el.icon}</td>
                         </tr>
