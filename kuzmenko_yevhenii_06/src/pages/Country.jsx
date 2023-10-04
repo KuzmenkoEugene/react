@@ -1,12 +1,16 @@
 import React from 'react'
 import Navigation from '../components/Navigation/Navigation'
 import { useSelector } from 'react-redux'
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import BasicButton from '../components/Button/Button';
 
 export default function Country() {
 
   const { country } = useParams();
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const translationItem = searchParams.get('translation');
 
   let countriesList = useSelector(store => store.countries)
 
@@ -42,7 +46,7 @@ export default function Country() {
       <Navigation />
       {selectedCountry ? (
         <div>
-          <h2>{selectedCountry.name.official}</h2>
+          <h2>{selectedCountry.translations[translationItem]?.official || null ? selectedCountry.translations[translationItem]?.official || null : selectedCountry.name.official}</h2>
           {renderNestedList(selectedCountry)}
         </div>
       ) : (

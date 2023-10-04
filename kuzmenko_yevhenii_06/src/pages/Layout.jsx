@@ -19,7 +19,7 @@ export default function Layout() {
                         <Route index path={"/"} element={<Home />}></Route>
                         <Route path={"countries"} element={<Countries />}></Route>
                         <Route path={"countries/:country"} element={<Country />}></Route>
-                        <Route path={"countries/:country:name"} element={<Country />}></Route>
+                        <Route path={"countries/:country"} element={<Country />}></Route>
                     </Routes>
                 </main>
             </BrowserRouter>
