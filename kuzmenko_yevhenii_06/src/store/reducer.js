@@ -151,7 +151,12 @@ const INITIAL_STATE = {
 const reducer = (state = INITIAL_STATE, {type, payload}) => {
     switch(type) {
         case 'DELETE_ITEM':
-            return {...state}
+            return {
+                ...state,
+                countries: state.countries.filter(
+                  (item) => item.name.official !== payload
+                ),
+              };
         default:
             return state
     }

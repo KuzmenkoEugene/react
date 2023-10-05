@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import BasicButton from '../Button/Button'
+import ButtonDelete from '../ButtonDelete/ButtonDelete'
 
 export default function CountriesListComponent() {
 
@@ -13,7 +13,7 @@ export default function CountriesListComponent() {
       <ul>
         {countriesList.map((el, index) => (
           <li key={index}>
-            <Link to={el.name.official}>{el.flag} {el.name.official}</Link> <BasicButton title={'Delete'} />
+            <Link to={el.name.official}>{el.flag} {el.name.official}</Link> <ButtonDelete nameCountry={el.name.official} title={'Delete'} />
           </li>
         ))}
       </ul>

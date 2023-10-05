@@ -14,11 +14,9 @@ export default function Layout() {
         <Provider store={store}>
             <BrowserRouter>
                 <main>
-
                     <Routes>
                         <Route index path={"/"} element={<Home />}></Route>
                         <Route path={"countries"} element={<Countries />}></Route>
-                        <Route path={"countries/:country"} element={<Country />}></Route>
                         <Route path={"countries/:country"} element={<Country />}></Route>
                     </Routes>
                 </main>
